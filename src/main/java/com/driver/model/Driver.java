@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "driver")
+@Table(name = "Driver")
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -18,7 +18,7 @@ public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int driverId;
     @Column(nullable = false)
     private String mobile;
     @Column(nullable = false)
@@ -29,4 +29,11 @@ public class Driver {
 
     @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
     Cab cab;
+
+    public Cab getCab(){
+        return cab;
+    }
+    public void setCab(Cab cab) {
+        this.cab = cab;
+    }
 }

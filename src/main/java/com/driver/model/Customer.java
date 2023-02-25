@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "customer")
+@Table(name = "Customer")
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -19,7 +19,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int customerId;
     @Column(nullable = false)
     private String mobile;
     @Column(nullable = false)
@@ -27,4 +27,12 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     List<TripBooking> tripBookingList = new ArrayList<>();
+
+    public List<TripBooking> getTripBookingList(){
+        return tripBookingList;
+    }
+
+    public void setTripBookingList(List<TripBooking>tripBookingList){
+        this.tripBookingList = tripBookingList;
+    }
 }
